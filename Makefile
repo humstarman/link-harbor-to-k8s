@@ -1,5 +1,6 @@
 NAME=harbor
 NAMESPACE=default
+IP=192.168.100.167
 PORT=80
 MANIFEST=./manifest
 URL=gmt.reg.me
@@ -12,6 +13,7 @@ cp:
 sed:
 	@find ${MANIFEST} -type f -name "*.yaml" | xargs sed -i s?"{{.name}}"?"${NAME}"?g
 	@find ${MANIFEST} -type f -name "*.yaml" | xargs sed -i s?"{{.namespace}}"?"${NAMESPACE}"?g
+	@find ${MANIFEST} -type f -name "*.yaml" | xargs sed -i s?"{{.ip}}"?"${IP}"?g
 	@find ${MANIFEST} -type f -name "*.yaml" | xargs sed -i s?"{{.port}}"?"${PORT}"?g
 	@find ${MANIFEST} -type f -name "*.yaml" | xargs sed -i s?"{{.url}}"?"${URL}"?g
 
